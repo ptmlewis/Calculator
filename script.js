@@ -60,7 +60,7 @@ for (let i = 0; i < userNumberSelection.length; i++){
 
         } else {
             calc3.push(e.target.textContent)
-            inputBox.textContent = calc3.join('')
+            inputBox.textContent = calc1.join('') + ' ' + calcOperatorSymbol[0] + ' ' + calc3.join('')
         }
     })
 }
@@ -68,15 +68,14 @@ for (let i = 0; i < userNumberSelection.length; i++){
 for (let i = 0; i < userOperatorSelection.length; i++){
     userOperatorSelection[i].addEventListener('click', function(e){
         calcOperator = true;
-        calcOperatorSymbol.push(e.target.textContent)
-        inputBox.textContent = calcOperatorSymbol.join('')
+        calcOperatorSymbol = [e.target.textContent];
+        inputBox.textContent = calc1.join('') + ' ' + calcOperatorSymbol[0];
     })
 }
 
 for (let i = 0; i < userEqualsSelection.length; i++){
     userEqualsSelection[i].addEventListener('click', function(e){
         let result = operate(Number(calc1.join('')),calcOperatorSymbol[0],Number(calc3.join('')))
-        console.log(`${calc1.join('')} ${calcOperatorSymbol[0]} ${(calc3.join(''))} =`,(result))
         inputBox.textContent = result
     })
 }
